@@ -23,27 +23,12 @@
         </div>
         <!-- /.table-responsive -->
         <hr/>
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+
         <div>
-            <h3>Your can search item for this customer below</h3>
-            <form class="form"  method="get" action="{{url('/item/search')}}">
-                {{csrf_field()}}
-                <div class="form-group">
-                    <input  type="text" name="name" placeholder="enter item name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <input  type="submit" value="submit" class="btn btn-danger">
-                </div>
-            </form>
+
+            <a href="{{url('/item')}}">search item for this customer</a>
         </div>
+
     </div>
     @section('test')
         @@parent

@@ -8,18 +8,69 @@ use App\Http\Requests;
 use App\Basket\Basket;
 use App\Http\Model\Item;
 use Illuminate\Support\Facades\Input;
-
 class OrderController extends CommonController
 {
-    protected $item;
-    protected $basket;
-    public function __construct(Basket $basket,Item $item)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $this->basket=$basket;
-        $this->item=$item;
+        //
     }
 
-    public function add($id,Basket $basket)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
         $input=Input::all();
         $item=Item::find($id);
@@ -28,11 +79,17 @@ class OrderController extends CommonController
         {
             $this->basket->add($item,$quantity);
         }
-        return view('order.index',compact('basket',$this->basket));
+        return back();
     }
 
-    public function basketall()
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        return view('order.index',compact('basket'));
+        //
     }
 }

@@ -12,10 +12,21 @@ use App\Http\Model\Item;
 use App\Basket\Basket;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Input;
+
 class CommonController extends Controller
 {
-    public function __construct()
+    protected $item;
+    public $basket;
+    public function __construct(Basket $basket,Item $item)
     {
-      
+        $this->basket=$basket;
+        $this->item=$item;
+        View::share('basket',$basket);
+        dd($basket->all());
+    }
+    public function set(Basket $basket)
+    {
+        $this->basket=$basket;
     }
 }

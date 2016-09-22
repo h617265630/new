@@ -2,6 +2,8 @@
 @section('content')
         <div class="table-responsive">
 
+            <form method="post" action="{{url('/item')}}">
+                {{csrf_field()}}
             <table class="table">
                 <thead>
                 <tr>
@@ -19,21 +21,19 @@
                     <td>{{$item->name}}</td>
                     <td>{{$item->detail}}</td>
                     <td>{{$item->price}}</td>
-                    <form method="post" action="{{url('/order/add/'.$item->id)}}">
-                        {{csrf_field()}}
-                    <td>
+                        <td>
                         <select name="quantity" class="form-control input-sm">
                            @for($num=1;$num<=$item->stock;$num++)
-                            <option value="{{$num}}">{{$num}}</option>
+                            <option value="{{$num}}">{{$num}}</option>endfor
                             @endfor
                             <option value="0">None</option>
                         </select>
-                    </td>
-                    <td><input type="submit" class="btn btn-danger" value="add to order"></td>
-                    </form>
+                        </td>
+                        <td><input type="hidden" name="id" value="{{$item->id}}"></td>
+                        <td><input type="submit" value="add to order"></td>
                 </tr>
                 </tbody>
             </table>
-
+            </form>
         </div>
 @endsection

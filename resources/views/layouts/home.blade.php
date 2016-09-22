@@ -44,6 +44,7 @@
             </div>
             <p>JIE HUANG</p>
             <p>have a nice day</p>
+            @if(count($basket->all())>0)
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -56,10 +57,15 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><p>some items</p></td>
+                            @foreach($basket->all() as $item)
+                            <td><p>some items(include here)</p></td>
+                            @endforeach
                     </tr>
                     </tbody>
                 </table>
+                @else
+                    <p style="color:mediumvioletred"> these is no item in the basket, try add.</p>
+                @endif
             </div>
         </div>
     </div>
